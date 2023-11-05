@@ -30,23 +30,79 @@ console.log("555");
 // Find Amplitude.
 
 const calcAverageThermometer = function (temps, temps2) {
-    let max = temps[0];
-    let min = temps[0];
-    let merge =  temps.concat(temps2); // Where concat function does as concat or merge two arrays.
-    console.log(merge);
-    
-    for (let i = 0; i < temps.length; i++) {
-        if (temps[i] > max) {
-            max = temps[i];
-        }
-        if (temps[i] < min) {
-            min = temps[i]
-        }
-    }
-    console.log(max);
-    console.log(min);
-    return max - min;
-}
+  let max = temps[0];
+  let min = temps[0];
+  let merge = temps.concat(temps2); // Where concat function does as concat or merge two arrays.
+  console.log(merge);
 
-const test = calcAverageThermometer([3, 8 , 2],[5, 4 ,3]);
+  for (let i = 0; i < temps.length; i++) {
+    if (temps[i] > max) {
+      max = temps[i];
+    }
+    if (temps[i] < min) {
+      min = temps[i];
+    }
+  }
+  console.log(max);
+  console.log(min);
+  return max - min;
+};
+
+const test = calcAverageThermometer([3, 8, 2], [5, 4, 3]);
 const amplitude = console.log(test);
+
+// What is BUG ?
+// A bug is an error, flaw or fault in a software program that causes it to produce unexpected or incorrect results.As it is made by a programmer(Beginner and Expert Both)
+// As it comes most of times after the development when we launch Product or Website experienced by User so,
+// How can we solve it or get rid of it?
+// -Find The Bug.
+// -Analyze the bug.
+// -Solve the bug.
+// -Avoid in the future.
+
+const measureKelvin = function () {
+  let obj = {
+    Type: "Celsuis",
+    Change: "Kelvin",
+    Amount: +prompt(`Degree Celsuis:`),
+  };
+  console.table(obj); // Where it can log/show the key and values in table. (It works as log)
+
+  const kelvin = obj.Amount + 273;
+  return kelvin;
+};
+console.log(measureKelvin());
+// Now its concating the answer as 10273. But we want to add so;
+// -Identify.
+// -Analyze.
+// -Solve.
+
+// So first show the properties of obj.
+// Here we find that amount is in string.
+// We add + to add numbers as number to not behave as string.
+// Finally answer we get as 283.
+// ----------------------------------------------------------------------------------------------------------------- //
+
+// Another way of finding the bug.
+// Go to inspect => Sources => then add a breakpoint just click on number of lines(left hand side) => then click on right top to resume -> stop -> to find, analyze the bug.
+
+const arr = [17, 21, 23];
+const arr2 = [12, 5, -5, 0, 4];
+const printForecast = function (test, test2) {
+  let max = test[0];
+  let min = test2[0];
+
+  for (let i = 0; i < test.length; i++) {
+    if (test[i] >= max) {
+      max = test[i];
+      console.log(`There will be ${test[i]} on ${i + 1}`);
+    }
+  }
+  for (let i = 0; i < test2.length; i++) {
+    if (test2[i] <= min || test2[i] >= min) {
+      min = test2[i];
+      console.log(`There will be ${test2[i]} on ${i + 1}`);
+    }
+  }
+};
+console.log(printForecast(arr, arr2));
